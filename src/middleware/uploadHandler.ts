@@ -5,10 +5,10 @@ import path from "path";
 import crypto from "crypto";
 import { Request } from "express";
 import { mkdirSync } from "fs";
+import { DestinationCallback, FileNameCallback } from "src/interface/IMulter";
 
 const maxSize: number = Number(Config.fileupload.maxsize);
-type DestinationCallback = (error: Error | null, destination: string) => void;
-type FileNameCallback = (error: Error | null, filename: string) => void;
+
 /**
  * 정의한 mimetype과 동일한 파일만 필터링합니다.
  * @param fieldname rotue에서 정의한 필드이름입니다.
@@ -60,6 +60,6 @@ const fileFilter = (req: Request, file: Express.Multer.File, cb: FileFilterCallb
  */
 export const coordinateFile = multer({
   storage: multer.memoryStorage(),
-  limits: { fieldSize: 2048 },
+  limits: { fieldSize: maxSize },
   fileFilter
 });
