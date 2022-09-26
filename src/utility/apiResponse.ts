@@ -4,6 +4,10 @@ import { StatusCodes } from "http-status-codes";
 import { Config } from "src/config/config";
 
 export default class ApiResponse {
+  static init = (res: Response) => {
+    res.send("made by devByul");
+  };
+
   static result = (res: Response, status: number = 200, data: any = null) => {
     res.status(status);
 
@@ -17,11 +21,6 @@ export default class ApiResponse {
     const path = Config.fileupload.formFileDirname + saveName;
 
     res.download(path, originalName);
-  };
-
-  // 연습용 setHeader를 이용하여 파일 다운로드 작성 해봐야함
-  static sendFile = (res: Response, saveName: string, originalName: string) => {
-    res.setHeader("Content-Disposition", "attachment; filename=" + originalName);
   };
 
   static status = (res: Response, status: number) => {
