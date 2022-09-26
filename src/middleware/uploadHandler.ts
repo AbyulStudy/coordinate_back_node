@@ -3,7 +3,7 @@ import { Config } from "src/config/config";
 import { logger } from "src/config/logger";
 import path from "path";
 import crypto from "crypto";
-import { Request } from "express";
+import { Request, Express } from "express";
 import { mkdirSync } from "fs";
 import { DestinationCallback, FileNameCallback } from "src/interface/IMulter";
 
@@ -51,6 +51,12 @@ const fileFilter = (req: Request, file: Express.Multer.File, cb: FileFilterCallb
     cb(null, false);
   }
 };
+
+export const deprecatedCoordinateFile = multer({
+  storage: coordinateStorage,
+  limits: { fieldSize: maxSize },
+  fileFilter
+});
 
 /**
  * @description

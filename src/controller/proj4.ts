@@ -78,7 +78,7 @@ export default class proj4Controller {
       proj4.defs("utmk", epsg5179);
 
       const contentArr = decodingContent.split(crlf);
-      let resultArr: string[] = [];
+      const resultArr: string[] = [];
       contentArr.map((line, index) => {
         try {
           const lineStr = utmkWgs84Swap(line, { separator, coordinateSystemType });
