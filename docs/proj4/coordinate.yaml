@@ -1,0 +1,37 @@
+post:
+  tags:
+    - proj4
+  summary: proj4
+  description: "좌표계 타입 - wgs84 | utmk  좌표계 타입 - wgs84 | utmk"
+  parameters:
+    - name: separator
+      in: query
+      schema:
+        type: string
+        default: ","
+    - name: coordinateSystemType
+      in: query
+      schema:
+        type: string
+        default: "wgs84"
+
+  requestBody:
+    content:
+      multipart/form-data:
+        schema:
+          type: object
+          properties:
+            # 'file' will be the field name in this multipart request
+            coordinateFile:
+              type: string
+              format: binary
+
+  responses:
+    "200":
+      $ref: "../swagger.yaml#/components/responses/SuccessOnlyResponse"
+    "204":
+      $ref: "../swagger.yaml#/components/responses/NoContentResponse"
+    "400":
+      $ref: "../swagger.yaml#/components/responses/BadRequestResponse"
+    "5XX":
+      $ref: "../swagger.yaml#/components/responses/ErrorResponse"

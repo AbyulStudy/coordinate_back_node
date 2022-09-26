@@ -1,10 +1,10 @@
 openapi: "3.0.3"
 info:
-  title: "Express BackEnd init Swagger"
-  description: "maker: Kino"
+  title: "Express BackEnd"
+  description: "Swagger Ver3.0.3 maker: Abyul(devByul)"
   version: "1.0.0"
   contact:
-    email: "kino@ianswer.co.kr"
+    email: "devbyul@gmail.com"
   servers:
     - url: https://development.gigantic-server.com/v1
       description: Development server
@@ -15,7 +15,9 @@ info:
 paths:
   $ref: "./path.yaml"
 tags:
-  - name: "common"
+  - name: "proj4"
+    description: ""
+  - name: "epsg"
     description: ""
 
 components:

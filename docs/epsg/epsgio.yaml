@@ -1,0 +1,21 @@
+get:
+  tags:
+    - epsg
+  summary: esps
+  description: ""
+  parameters:
+    - name: epsg
+      in: query
+      schema:
+        type: string
+        default: "4326"
+
+  responses:
+    "200":
+      $ref: "../swagger.yaml#/components/responses/SuccessOnlyResponse"
+    "204":
+      $ref: "../swagger.yaml#/components/responses/NoContentResponse"
+    "400":
+      $ref: "../swagger.yaml#/components/responses/BadRequestResponse"
+    "5XX":
+      $ref: "../swagger.yaml#/components/responses/ErrorResponse"

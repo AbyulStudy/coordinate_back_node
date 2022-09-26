@@ -1,5 +1,4 @@
-# /imgs/{src}:
-#   $ref: "common/common.imgs.yaml"
-# /form/{saveName}:
-#   $ref: "common/common.formFiles.yaml"
-
+/proj4/coordinate:
+  $ref: "proj4/coordinate.yaml"
+/epsg:
+  $ref: "epsg/epsgio.yaml"
