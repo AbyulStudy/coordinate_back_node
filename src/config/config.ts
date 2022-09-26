@@ -13,6 +13,7 @@ export const Config: any = {
   fileupload: {
     imgDirname: process.env.FILE_IMGDIR,
     formFileDirname: process.env.FILE_FORMFILEDIR,
+    coordinateDirname: process.env.FILE_COORDINATEDIR,
     maxsize: process.env.FILE_MAXSIZE,
     description: process.env.FILE_MAXSIZE_DESC
   },
