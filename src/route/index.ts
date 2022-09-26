@@ -7,12 +7,10 @@ import indexController from "../controller/index";
 
 const router = express.Router();
 
-router.get("/", indexController.indexPage);
-
 /**
  * http://{serverDomain}/proj4/coordinate?separator=""&coordinateSystemType=""
  *  */
-router.get("/proj4/coordinate", coordinateFile.single("coordinateFile"), proj4.proj4Swap);
+router.post("/proj4/coordinate", coordinateFile.single("coordinateFile"), proj4.proj4Swap);
 
 /**
  * http://{serverDomain}/epsg?epsg=""
