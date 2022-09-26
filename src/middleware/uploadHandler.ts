@@ -25,6 +25,8 @@ const fileMimeTypeFileter = (fieldname: string, mimetype: string) => {
 };
 
 /**
+ * @deprecated
+ *
  * @link multer.diskStorage https://github.com/expressjs/multer/blob/master/doc/README-ko.md#diskstorage
  */
 const coordinateStorage = multer.diskStorage({
