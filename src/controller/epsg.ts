@@ -16,7 +16,6 @@ export default class epsgController {
    */
   static epsg: IController = async (req, res) => {
     const { epsg }: any = req.query;
-
     try {
       const result = await epsgio(epsg);
 
@@ -24,10 +23,10 @@ export default class epsgController {
         ApiResponse.result(res, StatusCodes.OK, result);
       } else {
         const error = {
-          code: 404,
+          code: "WRONG_CODE",
+          status: StatusCodes.BAD_REQUEST,
           message: "wrong epsg code",
-          url: result[0],
-          sql: null
+          url: result[0]
         };
 
         ApiResponse.error(res, error);
