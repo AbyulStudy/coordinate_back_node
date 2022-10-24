@@ -18,14 +18,15 @@ import { proj4HandlerQuery } from "src/interface/IProj4";
 
 export const utmkWgs84Swap = (line: string, query: proj4HandlerQuery) => {
   const { separator, coordinateSystemType } = query;
+  const isWgs84 = coordinateSystemType === "wgs84" ? true : false;
   const lineArr = line.split(separator);
   const address = lineArr[0];
   let longitudeX = Number(lineArr[1]);
   let latitudeY = Number(lineArr[2]);
-  const coordinate = [longitudeX, latitudeY];
+  const coordinate = isWgs84 ? [latitudeY, longitudeX] : [longitudeX, latitudeY];
 
   let proj4Result;
-  if (coordinateSystemType === "wgs84") {
+  if (isWgs84) {
     proj4Result = proj4("wgs84", "utmk", coordinate);
   } else {
     proj4Result = proj4("utmk", "wgs84", coordinate);
@@ -34,5 +35,5 @@ export const utmkWgs84Swap = (line: string, query: proj4HandlerQuery) => {
   longitudeX = proj4Result[1];
   latitudeY = proj4Result[0];
 
-  return `${address},${longitudeX},${latitudeY}`;
+  return isWgs84 ? `${address},${latitudeY},${longitudeX}` : `${address},${longitudeX},${latitudeY}`;
 };
